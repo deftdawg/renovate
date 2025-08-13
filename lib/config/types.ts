@@ -353,6 +353,7 @@ export interface AssigneesAndReviewersConfig {
   assigneesSampleSize?: number;
   ignoreReviewers?: string[];
   reviewersFromCodeOwners?: boolean;
+  reviewersFromLastXCommits?: number;
   reviewers?: string[];
   reviewersSampleSize?: number;
   additionalReviewers?: string[];

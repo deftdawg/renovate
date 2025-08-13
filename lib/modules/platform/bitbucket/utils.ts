@@ -57,6 +57,7 @@ export function prInfo(pr: PrResponse): Pr {
       ? 'closed'
       : pr.state?.toLowerCase() /* v8 ignore stop */,
     createdAt: pr.created_on,
+    files: [],
   };
 }
 

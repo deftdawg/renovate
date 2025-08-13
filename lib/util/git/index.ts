@@ -1561,3 +1561,22 @@ export async function getRemotes(): Promise<string[]> {
     throw err;
   } /* v8 ignore stop */
 }
+
+export async function getCommitAuthors(
+  filePaths: string[],
+  count: number,
+): Promise<string[]> {
+  await syncGit();
+  const authors = new Set<string>();
+  for (const filePath of filePaths) {
+    try {
+      const log = await git.log({ file: filePath, n: count });
+      for (const commit of log.all) {
+        authors.add(commit.author_email);
+      }
+    } catch (err) {
+      logger.warn({ err, filePath }, 'Failed to get git log for file');
+    }
+  }
+  return [...authors];
+}

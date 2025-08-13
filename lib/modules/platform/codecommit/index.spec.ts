@@ -754,6 +754,7 @@ describe('modules/platform/codecommit/index', () => {
         destinationCommit: '321',
         sourceRepo: undefined,
         body: 'some old description',
+        files: [],
       };
       config.prList.push(pr);
       codeCommitClient.on(UpdatePullRequestDescriptionCommand).resolvesOnce({});
@@ -781,6 +782,7 @@ describe('modules/platform/codecommit/index', () => {
         destinationCommit: '321',
         sourceRepo: undefined,
         body: 'new description',
+        files: [],
       };
       config.prList.push(pr);
       codeCommitClient.on(UpdatePullRequestTitleCommand).resolvesOnce({});

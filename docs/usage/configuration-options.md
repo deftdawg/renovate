@@ -4296,6 +4296,10 @@ Read the docs for your platform for details on syntax and allowed file locations
 
 Please note that Reviewers are only added during creation of a PR, but are not modified afterwards.
 
+## reviewersFromLastXCommits
+
+If you set this option to a number greater than 0, Renovate will get the last X committers for each file in the PR and add them as reviewers.
+
 ## reviewersSampleSize
 
 ## rollback

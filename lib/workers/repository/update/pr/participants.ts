@@ -4,6 +4,7 @@ import type { RenovateConfig } from '../../../../config/types';
 import { logger } from '../../../../logger';
 import type { Pr } from '../../../../modules/platform';
 import { platform } from '../../../../modules/platform';
+import { getCommitAuthors } from '../../../../util/git';
 import { noLeadingAtSymbol } from '../../../../util/common';
 import { sampleSize } from '../../../../util/sample';
 import { codeOwnersForPr } from './code-owners';
@@ -76,6 +77,19 @@ export async function addParticipants(
     reviewers = await addCodeOwners(config, reviewers, pr);
     logger.debug(
       `Reviewers from code owners: ${reviewers.map((reviewer) => `"${reviewer}"`).join(', ')}`,
+    );
+  }
+  if (
+    is.number(config.reviewersFromLastXCommits) &&
+    config.reviewersFromLastXCommits > 0
+  ) {
+    const commitAuthors = await getCommitAuthors(
+      pr.files,
+      config.reviewersFromLastXCommits,
+    );
+    reviewers = reviewers.concat(commitAuthors);
+    logger.debug(
+      `Reviewers from last ${config.reviewersFromLastXCommits} commits: ${commitAuthors.map((reviewer) => `"${reviewer}"`).join(', ')}`,
     );
   }
   if (

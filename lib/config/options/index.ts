@@ -2463,6 +2463,13 @@ const options: RenovateOptions[] = [
     default: false,
   },
   {
+    name: 'reviewersFromLastXCommits',
+    description:
+      'Determine reviewers based on the last X committers of the changed files.',
+    type: 'integer',
+    default: 0,
+  },
+  {
     name: 'filterUnavailableUsers',
     description: 'Filter reviewers and assignees based on their availability.',
     type: 'boolean',

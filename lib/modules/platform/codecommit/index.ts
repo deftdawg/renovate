@@ -184,6 +184,7 @@ export async function getPrList(): Promise<CodeCommitPr[]> {
       number: Number.parseInt(prId),
       title: prInfo.title!,
       body: prInfo.description!,
+      files: [],
     };
     fetchedPrs.push(pr);
   }
@@ -273,6 +274,7 @@ export async function getPr(
     targetBranch: prInfo.pullRequestTargets![0].destinationReference!,
     destinationCommit: prInfo.pullRequestTargets![0].destinationCommit!,
     body: prInfo.description!,
+    files: [],
   };
 }
 

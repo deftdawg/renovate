@@ -86,6 +86,7 @@ export interface Pr {
   targetBranch?: string;
   title: string;
   isDraft?: boolean;
+  files: string[];
 }
 
 /**
