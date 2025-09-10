@@ -14,6 +14,12 @@
   },
   "packageRules": [
     {
+      "description": "Don't upgrade floating @latest devbox versions",
+      "matchManagers": ["devbox"],
+      "matchCurrentValue": "latest",
+      "enabled": false
+    },
+    {
       "matchPackageNames": ["containerbase/node"],
       "versioning": "node"
     },
